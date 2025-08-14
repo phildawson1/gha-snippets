@@ -9,7 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       OUTPUT: '{ "list_one":  [{"name": "foo"}] "list_two":  [{"name": "bar"}] }'
-        
     steps:
       - name: produce object output
         run: |
@@ -24,7 +23,7 @@ jobs:
     steps:
       - name: Munge list 
         run: |
-          echo ${{ fromJSON(needs.produce_output.output).content.*.name }} 
+          echo ${{ fromJSON(needs.produce_output.output) }} 
         
   
     

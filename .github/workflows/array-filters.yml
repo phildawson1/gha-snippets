@@ -23,7 +23,7 @@ jobs:
     steps:
       - name: Munge list 
         run: |
-          echo ${{ fromJSON(needs.produce_output.output) }} 
+          echo ${{ needs.produce_output.output }} 
         
   
     

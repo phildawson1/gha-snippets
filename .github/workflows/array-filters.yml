@@ -8,11 +8,8 @@ jobs:
       contents: read
     runs-on: ubuntu-latest
     env:
-      OUTPUT: |
-        {
-          "list_one":  [{"name": "foo"}]
-          "list_two":  [{"name": "bar"}]
-        }
+      OUTPUT: '{ "list_one":  [{"name": "foo"}] "list_two":  [{"name": "bar"}] }'
+        
     steps:
       - name: produce object output
         run: |

@@ -1,0 +1,34 @@
+name: array-filters
+on: workflow_dispatch  
+
+jobs: 
+  produce_output:
+    name: Try array stuff
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    env:
+      OUTPUT: |
+        {
+          "list_one":  [{"name": "foo"}]
+          "list_two":  [{"name": "bar"}]
+        }
+    steps:
+      - name: produce object output
+        run: |
+            echo "content=${OUTPUT}" >> $GITHUB_OUTPUT
+
+  use_output:
+    permissions: 
+      contents: read
+    runs-on: ubuntu-latest
+    needs: produce_output
+    env:
+      INPUT: '{{ fromJSON(produce_output.output).content.*.name }}'
+    steps:
+      - name: Munge list 
+        run: |
+          echo "$INPUT"
+        
+  
+    

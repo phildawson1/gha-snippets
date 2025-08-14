@@ -23,7 +23,7 @@ jobs:
     steps:
       - name: Munge list 
         run: |
-          echo "output=${{ needs.produce_output.output.content }}"" >> $GITHUB_OUTPUT
+          echo "output=${{ needs.produce_output.output.content }}" >> $GITHUB_OUTPUT
         
   
     

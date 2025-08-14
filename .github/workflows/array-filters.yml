@@ -13,6 +13,7 @@ jobs:
     steps:
       - name: produce object output
         run: |
+            echo "content=${OUTPUT}"
             echo "content=${OUTPUT}" >> $GITHUB_OUTPUT
 
   use_output:
@@ -20,12 +21,10 @@ jobs:
       contents: read
     runs-on: ubuntu-latest
     needs: produce_output
-    env:
-      INPUT: ${{ fromJSON(needs.produce_output.output).content.*.name }} 
     steps:
       - name: Munge list 
         run: |
-          echo "$INPUT"
+          echo ${{ fromJSON(needs.produce_output.output).content.*.name }} 
         
   
     

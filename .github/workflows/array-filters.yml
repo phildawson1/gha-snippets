@@ -23,7 +23,13 @@ jobs:
     steps:
       - name: Munge list 
         run: |
-          echo ${{ needs.produce_output.output }} 
+          echo "output=${{ needs.produce_output.output }}"" >> $GITHUB_OUTPUT
         
   
     
+  # includes:
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     matrix:
+  #       include:
+          
